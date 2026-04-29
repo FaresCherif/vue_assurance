@@ -1,38 +1,54 @@
 # vue_assurance
 
-This template should help get you started developing with Vue 3 in Vite.
+Application de gestion de contrats d'assurance construite avec Vue 3.
 
-## Recommended IDE Setup
+## Stack
+ 
+- **Vue 3** — Composition API avec `<script setup>`
+- **Vue Router** — navigation entre les pages
+- **Vite** — bundler
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Structure du projet
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```
+src/
+├── assets/
+│   └── contractCard.css  # styles des cartes de contrats de la vue globale
+│   └── detailVue.css     # styles de la vue détaillé d'un contrat
+│   └── detailVue.css     # styles de la page d'accueil
+│   └── main.css          # styles globaux et fond
+├── components/
+│   ├── ContractCard.vue  # carte d'un contrat
+│   └── FilterBar.vue     # Filtre
+├── data/
+│   └── contrats.json     # données des contrats
+├── router/
+│   └── index.js          # configuration des routes
+├── views/
+│   ├── HomeView.vue      # liste des contrats avec filtre
+│   ├── DetailView.vue    # détail d'un contrat
+└── main.js
 ```
 
-### Compile and Hot-Reload for Development
+## Routes
+ 
+| Chemin | Vue | Description |
+|--------|-----|-------------|
+| `/` | `HomeView` | Liste de tous les contrats |
+| `/detail/:contractnumber` | `DetailView` | Détail d'un contrat |
 
-```sh
-npm run dev
-```
 
-### Compile and Minify for Production
+## Fonctionnalités
+ 
+- Affichage des contrats depuis un fichier JSON
+- Filtrage par statut (Tous / Actif / Résilié)
+- Navigation vers le détail d'un contrat au clic
+- Badge de statut coloré (vert = actif, rouge = résilié)
 
-```sh
-npm run build
-```
+## Concepts Vue utilisés
+ 
+- `defineProps` / `defineEmits` — communication entre composants
+- `ref` / `computed` — réactivité
+- `v-for` / `v-if` — rendu conditionnel et listes
+- `useRouter` / `useRoute` — navigation programmatique
+- `:class` — classes dynamiques
