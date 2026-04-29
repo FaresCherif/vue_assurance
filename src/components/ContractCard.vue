@@ -6,8 +6,8 @@ const props = defineProps({
         default(){
             return {
                 id : 10,
-                title : "Default title",
-                description : "Default description"
+                type : "Default type",
+                titulaire : "Default titulaire"
             }
         }
     }
@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
     <div class="contract_presentation"> 
-        <h1>{{ infos.title }}</h1>
-        <p>{{ infos.description }}</p>
+        <h1>{{ infos.type }}</h1>
+        <p>{{ infos.titulaire }}</p>
     </div>
 </template>
