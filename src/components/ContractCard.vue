@@ -1,5 +1,6 @@
 <script setup>
 import '../assets/contractCard.css'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
     infos: {
@@ -15,10 +16,16 @@ const props = defineProps({
     }
 })
 
+const router = useRouter();
+
+function goToDetail() {
+  router.push(`/detail/${props.infos.id}`)
+}
+
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @click="goToDetail">
     <div class="card-top">
       <span class="type-badge">{{ infos.type }}</span>
       <span class="status">
