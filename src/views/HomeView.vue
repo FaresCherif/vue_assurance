@@ -1,14 +1,16 @@
 <script setup>
 import ContractCard from '../components/ContractCard.vue';
 import contratsData from '../data/contrats.json'
-import { reactive } from 'vue'
-
+import '../assets/home.css'
 </script>
 
 <template>
 
-  <ContractCard 
-    v-for="contratData in contratsData"
-    :infos="contratData"
-   />
+    <div class="grid">
+        <ContractCard 
+            v-for="contratData in contratsData"
+            :infos="contratData"
+        />
+   </div>
 </template>
+

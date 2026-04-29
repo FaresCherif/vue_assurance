@@ -1,4 +1,6 @@
 <script setup>
+import '../assets/contractCard.css'
+
 const props = defineProps({
     infos: {
         type: Object,
@@ -16,8 +18,15 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="contract_presentation"> 
-        <h1>{{ infos.type }}</h1>
-        <p>{{ infos.titulaire }}</p>
+  <div class="card">
+    <div class="card-top">
+      <span class="type-badge">{{ infos.type }}</span>
+      <span class="status">
+          <span class="dot" :class="infos.statut === 'Actif' ? 'dot_on' : 'dot_off'"/>
+          {{ infos.statut }}
+      </span>
     </div>
+    <div class="card-title">{{ infos.titre }}</div>
+    <div class="card-sub">{{ infos.titulaire }}</div>
+  </div>
 </template>
