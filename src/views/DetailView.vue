@@ -1,21 +1,27 @@
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import contrats from '../data/contrats.json'
 import '../assets/detailVue.css'
 
 const route = useRoute()
+const router = useRouter();
 
 const contrat = computed(() => 
   contrats.find(c => c.id  == route.params.contractnumber)
 )
 
+
+function goHome(){
+    router.push(`/`);
+}
 </script>
 
 
 <template>
+  <button @click="goHome" class="btn-back">Accueil</button>
   <div v-if="contrat" class="detail">
-    <div class="card">
+    <div class="card-detail">
       <div class="card-header">
         <div>
           <h1 class="numero">{{ contrat.numero }}</h1>
