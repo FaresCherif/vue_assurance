@@ -1,0 +1,6 @@
+[
+  { "id": 1, "type": "Auto", "statut": "Actif", "titulaire": "Jean Dupont", "prime": 420, "echeance": "2025-12-31" },
+  { "id": 2, "type": "Habitation", "statut": "Actif", "titulaire": "Marie Martin", "prime": 280, "echeance": "2025-06-30" },
+  { "id": 3, "type": "Santé", "statut": "Résilié", "titulaire": "Paul Bernard", "prime": 150, "echeance": "2024-03-15" },
+  { "id": 4, "type": "Auto", "statut": "Actif", "titulaire": "Sophie Leclerc", "prime": 510, "echeance": "2026-01-20" }
+]
