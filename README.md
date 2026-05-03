@@ -20,8 +20,7 @@ src/
 ├── components/
 │   ├── ContractCard.vue  # carte d'un contrat
 │   └── FilterBar.vue     # Filtre
-├── data/
-│   └── contrats.json     # données des contrats
+├── .env                  # Variables d'environnement
 ├── router/
 │   └── index.js          # configuration des routes
 ├── views/
@@ -40,7 +39,7 @@ src/
 
 ## Fonctionnalités
  
-- Affichage des contrats depuis un fichier JSON
+- Affichage des contrats depuis une api Springboot
 - Filtrage par statut (Tous / Actif / Résilié)
 - Navigation vers le détail d'un contrat au clic
 - Badge de statut coloré (vert = actif, rouge = résilié)
