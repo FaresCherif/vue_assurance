@@ -1,24 +1,21 @@
 <script setup>
-import { computed,onMounted,ref } from 'vue'
+import { onMounted,ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import '../assets/detailVue.css'
 
 const route = useRoute()
 const router = useRouter();
-const contratsData = ref([])
 const loading = ref(true)
+const contrat = ref([])
 
 
 onMounted(async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/contrat`)
-    contratsData.value = await response.json()
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/contrat/${route.params.contractnumber}`)
+    contrat.value = await response.json()
     loading.value = false;
 })
 
 
-const contrat = computed(() => 
-  contratsData.value.find(c => c.id  == route.params.contractnumber)
-)
 
 
 
