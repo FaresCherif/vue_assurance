@@ -1,15 +1,26 @@
 <script setup>
-import { computed } from 'vue'
+import { computed,onMounted,ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import contrats from '../data/contrats.json'
 import '../assets/detailVue.css'
 
 const route = useRoute()
 const router = useRouter();
+const contratsData = ref([])
+const loading = ref(true)
+
+
+onMounted(async () => {
+    const response = await fetch('https://springassurance-production.up.railway.app/contrat')
+    contratsData.value = await response.json()
+    loading.value = false;
+})
+
 
 const contrat = computed(() => 
-  contrats.find(c => c.id  == route.params.contractnumber)
+  contratsData.value.find(c => c.id  == route.params.contractnumber)
 )
+
+
 
 
 function goHome(){
@@ -20,7 +31,9 @@ function goHome(){
 
 <template>
   <button @click="goHome" class="btn-back">Accueil</button>
-  <div v-if="contrat" class="detail">
+  <div v-if="loading" class="detail"></div>
+
+  <div v-else-if="contrat" class="detail">
     <div class="card-detail">
       <div class="card-header">
         <div>

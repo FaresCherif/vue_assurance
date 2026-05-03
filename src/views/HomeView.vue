@@ -1,16 +1,23 @@
 <script setup>
-import { ref,computed } from 'vue';
+import { ref,computed,onMounted } from 'vue';
 import ContractCard from '../components/ContractCard.vue';
-import contratsData from '../data/contrats.json'
 import '../assets/home.css'
 import FilterBar from '@/components/FilterBar.vue';
 const filtreStatut = ref('Tous')
 
+const contratsData = ref([])
+
+onMounted(async () => {
+    const response = await fetch('https://springassurance-production.up.railway.app/contrat')
+    contratsData.value = await response.json()
+})
+
+
 const contratsFiltres = computed(() =>
     
     filtreStatut.value === 'Tous'
-    ? contratsData
-    : contratsData.filter(c => c.statut == filtreStatut.value)
+    ? contratsData.value
+    : contratsData.value.filter(c => c.statut == filtreStatut.value)
 
 )
 
@@ -19,7 +26,7 @@ const contratsFiltres = computed(() =>
 <template>
     <FilterBar @filter-change="filtreStatut=$event"/>
 
-    <div class="grid">
+    <div class="grid" v-if="contratsFiltres">
         <ContractCard 
             v-for="contratData in contratsFiltres"
             :infos="contratData"

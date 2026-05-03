@@ -1,6 +1,0 @@
-[
-  { "id": 1, "type": "Auto", "statut": "Actif", "titulaire": "Jean Dupont", "prime": 420, "echeance": "2025-12-31", "numero": "AUT-20241", "titre": "Renault Clio IV" },
-  { "id": 2, "type": "Habitation", "statut": "Actif", "titulaire": "Marie Martin", "prime": 280, "echeance": "2025-06-30", "numero": "HAB-20189", "titre": "Appartement Paris 11e" },
-  { "id": 3, "type": "Santé", "statut": "Résilié", "titulaire": "Paul Bernard", "prime": 150, "echeance": "2024-03-15", "numero": "SAN-30872", "titre": "Mutuelle Confort+" },
-  { "id": 4, "type": "Auto", "statut": "Actif", "titulaire": "Sophie Leclerc", "prime": 510, "echeance": "2026-01-20", "numero": "AUT-20455", "titre": "Peugeot 308 II" }
-]
