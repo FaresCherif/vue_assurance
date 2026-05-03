@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted,ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import api from '@/api/axios'
+
 import '../assets/detailVue.css'
 
 const route = useRoute()
@@ -10,8 +12,8 @@ const contrat = ref([])
 
 
 onMounted(async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/contrat/${route.params.contractnumber}`)
-    contrat.value = await response.json()
+    const response = await api.get(`/contrat/${route.params.contractnumber}`)
+    contrat.value = await response.data
     loading.value = false;
 })
 

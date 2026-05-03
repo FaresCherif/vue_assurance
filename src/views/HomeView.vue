@@ -1,6 +1,8 @@
 <script setup>
 import { ref,computed,onMounted } from 'vue';
 import ContractCard from '../components/ContractCard.vue';
+import api from '@/api/axios'
+
 import '../assets/home.css'
 import FilterBar from '@/components/FilterBar.vue';
 const filtreStatut = ref('Tous')
@@ -8,8 +10,8 @@ const filtreStatut = ref('Tous')
 const contratsData = ref([])
 
 onMounted(async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/contrat`)
-    contratsData.value = await response.json()
+    const response = await api.get(`/contrat`)
+    contratsData.value = await response.data
 })
 
 
