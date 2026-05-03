@@ -10,7 +10,7 @@ const loading = ref(true)
 
 
 onMounted(async () => {
-    const response = await fetch('https://springassurance-production.up.railway.app/contrat')
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/contrat`)
     contratsData.value = await response.json()
     loading.value = false;
 })
