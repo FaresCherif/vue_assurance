@@ -2,6 +2,7 @@
 import { ref,computed } from 'vue';
 
 import '../assets/contratFormulaire.css';
+import api from '@/api/axios';
 
 const form = ref({
     numero: '',
@@ -24,8 +25,12 @@ const formulaireValide = computed(() =>
     form.value.echeance
 )
 
-console.log(formulaireValide);
+const emit = defineEmits(['afterValidate'])
 
+async function creerContrat() {
+    await api.post('/contrat/add', form.value);
+    emit('afterValidate');
+}
 </script>
 
 

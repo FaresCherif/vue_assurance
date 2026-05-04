@@ -15,5 +15,5 @@ function goHome(){
 
 <template>
     <HomeRedirection @go-home="goHome"/>
-    <ContratFormulaireEmpty/>
+    <ContratFormulaireEmpty @after-validate="goHome"/>
 </template>
