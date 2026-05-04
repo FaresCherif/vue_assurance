@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 
 import HomeRedirection from '@/components/HomeRedirection.vue';
+import ContratFormulaireEmpty from '@/components/ContratFormulaireEmpty.vue';
 
 const router = useRouter();
 
@@ -14,6 +15,5 @@ function goHome(){
 
 <template>
     <HomeRedirection @go-home="goHome"/>
-    <h1>Nouveau contrat</h1>
-    
+    <ContratFormulaireEmpty/>
 </template>

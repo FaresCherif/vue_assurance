@@ -1,4 +1,7 @@
 <script setup>
+
+import '../assets/backBtn.css';
+
 defineEmits(['goHome'])
 </script>
 
