@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
 
 import '../assets/contratFormulaire.css';
 
@@ -12,6 +12,19 @@ const form = ref({
     prime: null,
     echeance: ''
 })
+
+
+const formulaireValide = computed(() => 
+    form.value.numero &&
+    form.value.titre &&
+    form.value.type &&
+    form.value.statut &&
+    form.value.titulaire &&
+    form.value.prime &&
+    form.value.echeance
+)
+
+console.log(formulaireValide);
 
 </script>
 
@@ -64,6 +77,6 @@ const form = ref({
             <input v-model="form.echeance" type="date" />
         </div>
 
-        <button @click="creerContrat">Créer le contrat</button>
+        <button :disabled="!formulaireValide" @click="creerContrat">Créer le contrat</button>
     </div>
 </template>
