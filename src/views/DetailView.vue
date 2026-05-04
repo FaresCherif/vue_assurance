@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted,ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute,useRouter } from 'vue-router'
 import api from '@/api/axios'
 
 import '../assets/detailVue.css'
 
+import HomeRedirection from "@/components/HomeRedirection.vue";
 const route = useRoute()
-const router = useRouter();
 const loading = ref(true)
 const contrat = ref([])
 
@@ -17,19 +17,18 @@ onMounted(async () => {
     loading.value = false;
 })
 
-
-
-
+const router = useRouter();
 
 
 function goHome(){
     router.push(`/`);
 }
+
 </script>
 
 
 <template>
-  <button @click="goHome" class="btn-back">Accueil</button>
+  <HomeRedirection @go-home="goHome"/>
   <div v-if="loading" class="detail"></div>
 
   <div v-else-if="contrat" class="detail">
