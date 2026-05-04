@@ -1,5 +1,5 @@
 <script setup>
-import { ref,computed,onMounted } from 'vue';
+import { ref,watch } from 'vue';
 import ContractCard from '../components/ContractCard.vue';
 import api from '@/api/axios'
 
@@ -9,28 +9,27 @@ const filtreStatut = ref('Tous')
 
 const contratsData = ref([])
 
-onMounted(async () => {
-    const response = await api.get(`/contrat`)
-    contratsData.value = await response.data
-})
+
+watch(filtreStatut, async (newStatut) => {
+    if (newStatut === 'Tous') {
+        const response = await api.get('/contrat')
+        contratsData.value = response.data
+    } else {
+        const response = await api.get(`/contrat/statut/${newStatut}`)
+        contratsData.value = response.data
+    }
+}, { immediate: true })
 
 
-const contratsFiltres = computed(() =>
-    
-    filtreStatut.value === 'Tous'
-    ? contratsData.value
-    : contratsData.value.filter(c => c.statut == filtreStatut.value)
-
-)
 
 </script>
 
 <template>
     <FilterBar @filter-change="filtreStatut=$event"/>
 
-    <div class="grid" v-if="contratsFiltres">
+    <div class="grid" v-if="contratsData">
         <ContractCard 
-            v-for="contratData in contratsFiltres"
+            v-for="contratData in contratsData"
             :infos="contratData"
         />
    </div>
