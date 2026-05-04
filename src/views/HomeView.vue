@@ -1,5 +1,6 @@
 <script setup>
 import { ref,watch } from 'vue';
+import { useRouter } from 'vue-router'
 import ContractCard from '../components/ContractCard.vue';
 import api from '@/api/axios'
 
@@ -22,6 +23,12 @@ watch(filtreStatut, async (newStatut) => {
 
 
 
+const router = useRouter();
+
+function goToNewContrat() {
+  router.push(`/add`)
+}
+
 </script>
 
 <template>
@@ -33,5 +40,7 @@ watch(filtreStatut, async (newStatut) => {
             :infos="contratData"
         />
    </div>
+
+   <button @click="goToNewContrat">Nouveau contrat</button>
 </template>
 
