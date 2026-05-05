@@ -1,6 +1,7 @@
 <script setup>
 import '../assets/contractCard.css'
 import { useRouter } from 'vue-router'
+import api from '@/api/axios';
 
 const props = defineProps({
     infos: {
@@ -22,6 +23,13 @@ function goToDetail() {
   router.push(`/detail/${props.infos.id}`)
 }
 
+const emit = defineEmits(['afterDelete'])
+
+async function deleteMedia(){
+  await api.delete(`/contrat/${props.infos.id}`);
+  emit('afterDelete');
+}
+
 </script>
 
 <template>
@@ -35,5 +43,6 @@ function goToDetail() {
     </div>
     <div class="card-title">{{ infos.titre }}</div>
     <div class="card-sub">{{ infos.titulaire }}</div>
+    <button @click.stop="deleteMedia">Delete</button>
   </div>
 </template>

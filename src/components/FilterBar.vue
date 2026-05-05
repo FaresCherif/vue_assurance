@@ -9,6 +9,7 @@ defineEmits(['filterChange'])
             <option
                 v-for="statut in ['Tous','Actif','Résilié']"
                 :key="statut"
+                :value="statut"
                 class="btn-filter"
                 >
             {{ statut }}

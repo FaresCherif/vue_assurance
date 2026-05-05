@@ -12,6 +12,11 @@ const contratsData = ref([])
 
 
 watch(filtreStatut, async (newStatut) => {
+    updateCardsDisplay(newStatut);
+}, { immediate: true })
+
+
+async function updateCardsDisplay(newStatut){
     if (newStatut === 'Tous') {
         const response = await api.get('/contrat')
         contratsData.value = response.data
@@ -19,9 +24,8 @@ watch(filtreStatut, async (newStatut) => {
         const response = await api.get(`/contrat/statut/${newStatut}`)
         contratsData.value = response.data
     }
-}, { immediate: true })
 
-
+}
 
 const router = useRouter();
 
@@ -38,6 +42,7 @@ function goToNewContrat() {
         <ContractCard 
             v-for="contratData in contratsData"
             :infos="contratData"
+            @after-delete="updateCardsDisplay(filtreStatut)"
         />
    </div>
 
