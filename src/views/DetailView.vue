@@ -24,6 +24,13 @@ function goHome(){
     router.push(`/`);
 }
 
+
+async function deleteMedia(){
+  await api.delete(`/contrat/${route.params.contractnumber}`);
+  goHome();
+}
+
+
 </script>
 
 
@@ -48,6 +55,7 @@ function goHome(){
         <div class="row"><span class="row-label">Échéance</span><span class="row-value">{{ contrat.echeance }}</span></div>
         <div class="row"><span class="row-label">Prime annuelle</span><span class="row-value prime">{{ contrat.prime }} €</span></div>
       </div>
+      <button class="delete-button" @click.stop="deleteMedia">Delete</button>
     </div>
   </div>
   <p v-else>Contrat introuvable</p>
