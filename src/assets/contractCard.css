@@ -50,3 +50,21 @@
   color: #888;
   margin-bottom: 14px;
 }
+
+.delete-button {
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  color: #E24B4A;
+  border: 1px solid #E24B4A;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delete-button:hover {
+  background: #E24B4A;
+  color: white;
+}

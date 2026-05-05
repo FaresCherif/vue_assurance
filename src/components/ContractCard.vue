@@ -43,6 +43,6 @@ async function deleteMedia(){
     </div>
     <div class="card-title">{{ infos.titre }}</div>
     <div class="card-sub">{{ infos.titulaire }}</div>
-    <button @click.stop="deleteMedia">Delete</button>
+    <button class="delete-button" @click.stop="deleteMedia">Delete</button>
   </div>
 </template>
