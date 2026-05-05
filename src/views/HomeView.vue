@@ -38,14 +38,18 @@ function goToNewContrat() {
 <template>
     <FilterBar @filter-change="filtreStatut=$event"/>
 
-    <div class="grid" v-if="contratsData">
-        <ContractCard 
-            v-for="contratData in contratsData"
-            :infos="contratData"
-            @after-delete="updateCardsDisplay(filtreStatut)"
-        />
-   </div>
+    <div class="grid_general" v-if="contratsData">
+        <TransitionGroup name="fade" tag="div" class="grid" >
 
+            <ContractCard 
+                v-for="(contratData, index) in contratsData"
+                :key="contratData.id"
+                :infos="contratData"
+                :style="{ transitionDelay: `${index * 50}ms` }"
+                @after-delete="updateCardsDisplay(filtreStatut)"
+            />
+        </TransitionGroup>
+    </div>
    <button @click="goToNewContrat">Nouveau contrat</button>
 </template>
 
