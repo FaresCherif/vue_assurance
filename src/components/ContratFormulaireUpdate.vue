@@ -21,7 +21,6 @@ const route = useRoute()
 onMounted(async () => {
     const response = await api.get(`/contrat/${route.params.contractnumber}`)
     form.value = await response.data
-    console.log(form.value)
     loading.value = false;
 })
 
